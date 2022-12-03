@@ -1,0 +1,12 @@
+/* :root {
+} */
+
+/* .fondo-morado {
+    background-color: var(--morado) !important;
+} */
+
+.company-shadow {
+    /* box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3); */
+    box-shadow: 12px 12px 16px 0 rgba(4, 3, 8, 0.25),
+        -8px -8px 12px 0 rgba(61, 46, 124, 0.3);
+}

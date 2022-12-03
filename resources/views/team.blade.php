@@ -9,7 +9,7 @@
             <div
                 class="w-full max-w-md p-4 bg-white border rounded-lg shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
                 <div class="flex items-center justify-between mb-4">
-                    <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">{{ __('Team') }}</h5>
+                    <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Integrantes</h5>
                 </div>
                 <div class="flow-root">
                     <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -51,7 +51,7 @@
                         <li class="py-3 sm:py-4">
                             <div class="flex items-center space-x-4">
                                 <div class="flex-shrink-0">
-                                    <img class="w-8 h-8 rounded-full" src="https://picsum.photos/200" alt="Dala image">
+                                    <img class="w-8 h-8 rounded-full" src="./perfiles/Chris.jpg" alt="Dala image">
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <p class="text-sm font-medium text-gray-900 truncate dark:text-white">

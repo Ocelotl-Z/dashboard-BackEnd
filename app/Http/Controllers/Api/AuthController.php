@@ -57,7 +57,17 @@ class AuthController extends Controller
             $user = Auth::user();
             $token = $user->createToken('token')->plainTextToken;
             $cookie = cookie('cookie_token', $token, 60 * 24);
-            return response(["token" => $token,"user"=>$user], Response::HTTP_OK)->withCookie($cookie);
+            return response(["token" => $token, "user" => $user], Response::HTTP_OK)->withCookie($cookie);
+        } else if (Auth::guard('company')->attempt($credentials->getData())) {
+            $userAuth = Auth::guard('company')->user();
+
+            $user = [
+                'id' => $userAuth->id,
+                'name' => $userAuth->name,
+                'email' => $userAuth->email,
+                'roles' => Auth::guard('company')->user()->getRoleNames(),
+            ];
+            return response(["user" => $user], Response::HTTP_OK);
         } else {
             return response(["message" => "The provided credentials do not match our records."], Response::HTTP_UNAUTHORIZED);
         }

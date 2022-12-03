@@ -26,7 +26,6 @@ class Employee extends Authenticatable
     ];
 
     protected $appends = [
-        'profile_photo_url',
         'full_name'
     ];
 

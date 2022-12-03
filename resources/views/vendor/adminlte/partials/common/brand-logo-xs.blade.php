@@ -16,11 +16,11 @@
     {{-- Small brand logo --}}
 
     @if (auth()->user()->company)
-        <img src="{{ auth()->user()->company->logo_path ? Storage::url(auth()->user()->company->logo_path) : secure_asset(config('adminlte.logo_img', 'vendor/adminlte/dist/img/AdminLTELogo.png')) }}"
+        <img src="{{ auth()->user()->company->logo_path ? Storage::url(auth()->user()->company->logo_path) : asset(config('adminlte.logo_img', 'vendor/adminlte/dist/img/AdminLTELogo.png')) }}"
             alt="{{ config('adminlte.logo_img_alt', 'AdminLTE') }}"
             class="{{ config('adminlte.logo_img_class', 'brand-image img-circle elevation-3') }}">
     @else
-        <img src="{{ secure_asset(config('adminlte.logo_img', 'vendor/adminlte/dist/img/AdminLTELogo.png')) }}"
+        <img src="{{ asset(config('adminlte.logo_img', 'vendor/adminlte/dist/img/AdminLTELogo.png')) }}"
             alt="{{ config('adminlte.logo_img_alt', 'AdminLTE') }}"
             class="{{ config('adminlte.logo_img_class', 'brand-image img-circle elevation-3') }}">
     @endif

@@ -72,4 +72,10 @@ class EmployeeController extends Controller
 
         return redirect()->route('admin.employees.index')->with('success', 'Usuario Creado');
     }
+
+    public function destroy( Employee $employee)
+    {
+        $employee->delete();
+        return redirect()->route('admin.employees.index')->with('success', 'Usuario Eliminado');
+    }
 }

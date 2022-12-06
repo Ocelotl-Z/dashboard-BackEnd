@@ -20,7 +20,7 @@
     @livewireStyles
 </head>
 
-<body>
+<body class="dark:bg-gray-800">
     <header class="{{ request()->is(['register', 'terms-of-service', 'privacy-policy']) ? 'static' : 'fixed' }} w-full">
         <nav class="bg-white border-gray-200 py-2.5 dark:bg-morado">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
@@ -84,7 +84,7 @@
             </div>
         </nav>
     </header>
-    <div class="font-sans text-gray-900 antialiased ">
+    <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
     </div>
 </body>

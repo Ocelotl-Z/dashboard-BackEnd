@@ -3,16 +3,16 @@
         {{-- CARD HEADER --}}
         <div class="card-header">
 
-            <a class="btn btn-success mb-3" href="{{ route('admin.employees.create') }}">
-                {{ __('Register new employee') }}
+            <a class="btn btn-success mb-3" href="{{ route('admin.roles.create') }}">
+                {{ __('Create new role') }}
             </a>
 
-            <input wire:model="search" class="form-control" placeholder="Ingrese el nombre o correo de un usuario">
+            <input wire:model="search" class="form-control" placeholder="Ingrese el nombre del rol">
 
         </div>
         {{-- CARD HEADER --}}
 
-        @if ($employees->count())
+        @if ($roles->count())
             {{-- CARD BODY --}}
             <div class="card-body">
                 {{-- TABLE --}}
@@ -20,10 +20,7 @@
                     {{-- TABLE HEAD --}}
                     <thead>
                         <tr>
-                            <th class="text-uppercase">{{ __('ID') }}</th>
                             <th class="text-uppercase">{{ __('Name') }}</th>
-                            <th class="text-uppercase">{{ __('E-Mail Address') }}</th>
-                            {{-- <th class="text-uppercase">{{ __('Company') }}</th> --}}
                             <th></th>
                         </tr>
                     </thead>
@@ -31,24 +28,20 @@
 
                     {{-- TABLE BODY --}}
                     <tbody>
-                        @foreach ($employees as $employee)
+                        @foreach ($roles as $role)
                             <tr>
-                                <td> {{ $employee->id }} </td>
-                                <td> {{ $employee->full_name }} </td>
-                                <td> {{ $employee->email }} </td>
+                                <td> {{ $role->name }} </td>
                                 <td>
                                     <div class="d-flex justify-content-end">
-                                        <a href=" {{ route('admin.employees.edit', $employee) }} "
-                                            class="btn btn-primary mr-3" data-toggle="tooltip" data-placement="top"
-                                            title="{{ __('Edit') }}">
+                                        <a href=" {{ route('admin.roles.edit', $role) }} " class="btn btn-primary mr-3"
+                                            data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('admin.employees.destroy', $employee) }}"
-                                            method="post">
+                                        <form action="{{ route('admin.roles.destroy', $role) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"
-                                            data-toggle="tooltip" data-placement="top" title="{{ __('Delete') }}">
+                                            <button type="submit" class="btn btn-danger" data-toggle="tooltip"
+                                                data-placement="top" title="{{ __('Delete') }}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </form>
@@ -63,7 +56,7 @@
             </div>
             {{-- CARD FOOTER --}}
             <div class="card-footer">
-                {{ $employees->links() }}
+                {{ $roles->links() }}
             </div>
         @else
             <div class="card-body">

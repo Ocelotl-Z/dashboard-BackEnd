@@ -28,8 +28,3 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('user-profile', [AuthController::class, 'userProfile']);
     Route::post('logout', [AuthController::class, 'logout']);
 });
-
-
-Route::get('/test', function () {
-    return ['message' => 'Ok'];
-});

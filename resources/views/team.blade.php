@@ -2,7 +2,7 @@
     <!-- Start block -->
     <section class="bg-white dark:bg-gray-600">
         <div
-            class=" flex flex-row justify-center max-w-screen-xl px-10 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
+            class=" flex flex-row justify-center max-h-screen max-w-screen-xl px-10 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
 
             {{-- new --}}
 

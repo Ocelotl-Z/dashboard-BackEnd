@@ -30,13 +30,19 @@
                                 <td> {{ $user->name }} </td>
                                 <td> {{ $user->email }} </td>
                                 <td>
-                                    <div class="d-flex justify-content-around">
-                                        <a href=" {{ route('admin.users.edit', $user) }} " class="btn btn-primary">
+                                    <div class="d-flex justify-content-end">
+                                        <a href=" {{ route('admin.users.edit', $user) }} " class="btn btn-primary mr-3"
+                                            data-toggle="tooltip" data-placement="top" title="{{ __('Edit') }}">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="#" class="btn btn-danger">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </a>
+                                        <form action="{{ route('admin.users.destroy', $user) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" data-toggle="tooltip"
+                                                data-placement="top" title="{{ __('Delete') }}">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

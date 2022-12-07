@@ -10,7 +10,7 @@ Para obtener el toke de autorización de debera realizar el login de la sigueint
 
 ### Url:
 
-> http://127.0.0.1:8000/api/login
+> https://dashboard-app-sdaw-ii-ecsml.ondigitalocean.app/api/login
 
 ### Headers:
 
@@ -32,7 +32,22 @@ Para obtener el toke de autorización de debera realizar el login de la sigueint
 
 ```json
 {
-    "token": "token_example"
+	"token": "token_example",
+	"user": {
+		"id": 1,
+		"name": "Example",
+		"paternal_surname": "Example",
+		"maternal_surname": "Example",
+		"email": "Example@gmail.com",
+		"email_verified_at": null,
+		"current_team_id": null,
+		"profile_photo_path": null,
+		"created_at": "2022-12-07T02:45:11.000000Z",
+		"updated_at": "2022-12-07T02:45:11.000000Z",
+		"two_factor_confirmed_at": null,
+		"profile_photo_url": "Example URL",
+		"full_name": "Example Full NAME"
+	}
 }
 ```
 
@@ -42,7 +57,7 @@ Para obtener la informacion del usuario se hara de la siguiente manera:
 
 ### Url:
 
-> http://127.0.0.1:8000/api/user-profile
+> https://dashboard-app-sdaw-ii-ecsml.ondigitalocean.app/api/user-profile
 
 ### Headers:
 
@@ -71,7 +86,7 @@ Para cerrar sesion se manda lo siguiente:
 
 ### Url:
 
-> http://127.0.0.1:8000/api/logout
+> https://dashboard-app-sdaw-ii-ecsml.ondigitalocean.app/api/logout
 
 ### Headers:
 

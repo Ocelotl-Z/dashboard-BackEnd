@@ -19,7 +19,9 @@ module.exports = {
                 azul: "#268FFF",
                 coco: "#C0C0C0",
                 blanco: "#EBEBEB",
-                azulito:"#004E98"
+                azulito: "#004E98",
+                adan: "#000000",
+                go: "#AFC7CF",
             },
         },
     },

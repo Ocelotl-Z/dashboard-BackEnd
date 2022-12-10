@@ -29,7 +29,7 @@ class Employee extends Authenticatable
         'full_name'
     ];
 
-    public function compnay()
+    public function company()
     {
         return $this->belongsTo(Company::class);
     }

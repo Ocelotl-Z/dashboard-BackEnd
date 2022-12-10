@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 class ReportController extends Controller
 {
@@ -18,22 +19,27 @@ class ReportController extends Controller
             'timeout'  => 2.0,
         ]);
 
-        $response = $client->request('GET', '/');
+        try {
+            $response = $client->request('GET', '/');
 
-        // $response = Http::acceptJson()->get('https://sdawhelpdesk.azurewebsites.net/');
-        // $reportes = $response->items;
+            // $response = Http::acceptJson()->get('https://sdawhelpdesk.azurewebsites.net/');
+            // $reportes = $response->items;
 
-        $reportes = json_decode($response->getBody())->items;
+            $reportes = json_decode($response->getBody())->items;
 
 
-        $pendientes =  count(array_filter($reportes, function ($reporte) {
-            return $reporte->estatus == "PENDIDNTE";
-        }));
+            $pendientes =  count(array_filter($reportes, function ($reporte) {
+                return $reporte->estatus == "PENDIDNTE";
+            }));
 
-        $completados = count(array_filter($reportes, function ($reporte) {
-            return $reporte->estatus == "REALIZADO";
-        }));
+            $completados = count(array_filter($reportes, function ($reporte) {
+                return $reporte->estatus == "REALIZADO";
+            }));
 
-        return view('admin.reports.index', compact('reportes', 'pendientes', 'completados'));
+            return view('admin.reports.index', compact('reportes', 'pendientes', 'completados'));
+        } catch (\Throwable $th) {
+            // dd($th->getMessage());
+            return view('errors.report');
+        }
     }
 }

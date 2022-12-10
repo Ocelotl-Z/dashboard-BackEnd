@@ -56,6 +56,15 @@ class AuthController extends Controller
         if (Auth::attempt($credentials->getData())) {
             $user = Auth::user();
             $token = $user->createToken('token')->plainTextToken;
+
+            $user = [
+                'id' => auth()->user()->id,
+                'name' => auth()->user()->name,
+                'email' => auth()->user()->email,
+                'photo_url' => auth()->user()->profile_photo_url,
+                'roles' => auth()->user()->getRoleNames(),
+            ];
+
             $cookie = cookie('cookie_token', $token, 60 * 24);
             return response(["token" => $token, "user" => $user], Response::HTTP_OK)->withCookie($cookie);
         } else if (Auth::guard('company')->attempt($credentials->getData())) {

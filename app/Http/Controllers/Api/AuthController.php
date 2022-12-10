@@ -75,10 +75,10 @@ class AuthController extends Controller
                 'id' => $userAuth->id,
                 'name' => $userAuth->name,
                 'email' => $userAuth->email,
-                // 'full_name'=> auth()->user()->full_name,
+                'full_name'=> $userAuth->full_name,
                 'roles' => Auth::guard('company')->user()->getRoleNames(),
             ];
-            return response(["user" => $user], Response::HTTP_OK);
+            return response(["user" =>  $user], Response::HTTP_OK);
         } else {
             return response(["message" => "The provided credentials do not match our records."], Response::HTTP_UNAUTHORIZED);
         }

@@ -23,6 +23,7 @@ return [
     'others'                        => 'OTROS',
     'employees'                     => 'Empleados',
     'roles'                         => 'Roles',
-    'company'                       => 'Compañia'
+    'company'                       => 'Compañia',
+    'reports'                       => 'Reportes'
 
 ];

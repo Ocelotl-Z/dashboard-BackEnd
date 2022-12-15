@@ -50,5 +50,6 @@
     "New employee": "Nuevo empleado",
     "Create new role": "Crear nuevo rol",
     "Delete": "Eliminar",
-    "Complete Reports":"Reportes Solucionados"
+    "Complete Reports": "Reportes Solucionados",
+    "Pending Reports": "Reportes Pendientes"
 }

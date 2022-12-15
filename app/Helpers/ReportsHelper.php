@@ -1,4 +1,5 @@
 <?php
+
 if (!function_exists('tiemposDeRespuesta')) {
     function tiemposDeRespuesta($reportes)
     {
@@ -25,6 +26,6 @@ if (!function_exists('tiemposDeRespuesta')) {
 
         $promedio =  array_sum($diferencias) / count($diferencias);
 
-        return ["rapida" => $diferencias[0], "lenta" => end($diferencias), "promedio" => $promedio];
+        return [gmdate("H:i:s", $diferencias[0] * 60), gmdate("H:i:s", end($diferencias) * 60), gmdate("H:i:s", $promedio * 60)];
     }
 }

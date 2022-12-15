@@ -10,17 +10,41 @@
 
 
     <div class="p-3">
-        <x-adminlte-info-box title="{{ count($reportes) }}" text="Reportes generados"
-            icon="fas fa-lg fa-user-plus text-primary" theme="gradient-primary" icon-theme="white" />
 
-        <x-adminlte-info-box title="{{ __('Complete Reports') }}" text="{{ $completados }}/{{ count($reportes) }}"
-            icon="fas fa-lg fa-tasks text-orange" theme="warning" icon-theme="dark" progress=42 progress-theme="dark"
-            description="{{ floor(($pendientes * 100) / count($reportes)) }}%" />
+        <div class="row">
+            <div class="col">
+                <x-adminlte-info-box title="{{ __('Complete Reports') }}" text="{{ $completados }}/{{ count($reportes) }}"
+                    icon="fas fa-lg fa-tasks text-orange" theme="warning" icon-theme="dark" progress=42 progress-theme="dark"
+                    description="{{ floor(($completados * 100) / count($reportes)) }}%" />
+            </div>
+            <div class="col">
+                <x-adminlte-info-box title="{{ __('Pending Reports') }}" text="{{ $pendientes }}/{{ count($reportes) }}"
+                    icon="fas fa-lg fa-tasks text-orange" theme="warning" icon-theme="dark" progress=42
+                    progress-theme="dark" description="{{ floor(($pendientes * 100) / count($reportes)) }}%" />
+            </div>
+        </div>
 
-        <div >
-            <p>Respuesta mas rapida: {{ $res[0] }} min.</p>
-            <p>Respuesta mas lenta: {{ $res[1] }} min.</p>
-            <p>Promedio : {{ $res[2] }} min.</p>
+        <div class="row">
+            <div class="col">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info"><i class="fas fa-tachometer-alt"></i></span>
+                    <div class="info-box-content">
+                        <span>Respuesta mas rapida: {{ $res[0] }}</span>
+                        <span>Respuesta mas lenta: {{ $res[1] }}</span>
+                        <span>Promedio : {{ $res[2] }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info"><i class="fas fa-tachometer-alt"></i></span>
+                    <div class="info-box-content">
+                        <span>Respuesta mas rapida: {{ $res[0] }}</span>
+                        <span>Respuesta mas lenta: {{ $res[1] }}</span>
+                        <span>Promedio : {{ $res[2] }}</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <canvas id="myChart" style="width:100%;max-width:600px"></canvas>

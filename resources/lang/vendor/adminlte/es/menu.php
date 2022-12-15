@@ -24,6 +24,7 @@ return [
     'employees'                     => 'Empleados',
     'roles'                         => 'Roles',
     'company'                       => 'Compañia',
-    'reports'                       => 'Reportes'
+    'reports'                       => 'Reportes',
+    'help desk'                     => 'Help Desk'
 
 ];

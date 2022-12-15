@@ -25,7 +25,7 @@ class ReportController extends Controller
 
             // $response = Http::acceptJson()->get('https://sdawhelpdesk.azurewebsites.net/');
             // $reportes = $response->items;
-
+            
             $reportes = json_decode($response->getBody())->items;
 
             $pendientes =  count(array_filter($reportes, function ($reporte) {

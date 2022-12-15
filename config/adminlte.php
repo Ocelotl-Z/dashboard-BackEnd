@@ -332,9 +332,9 @@ return [
             'route'  => 'admin.roles.index',
             'icon' => 'fas fa-fw fa-user-cog',
         ],
-        ['header' => 'Data'],
+        ['header' => 'reports'],
         [
-            'text' => 'reports',
+            'text' => 'help desk',
             'route'  => 'admin.reports.index',
             'icon' => 'fas fa-fw fa-user-cog',
         ],

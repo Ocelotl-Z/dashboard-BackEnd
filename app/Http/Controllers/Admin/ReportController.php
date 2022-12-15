@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
+use DateTime;
 use GuzzleHttp\Exception\ClientException;
 
 
@@ -25,7 +26,7 @@ class ReportController extends Controller
 
             // $response = Http::acceptJson()->get('https://sdawhelpdesk.azurewebsites.net/');
             // $reportes = $response->items;
-            
+
             $reportes = json_decode($response->getBody())->items;
 
             $pendientes =  count(array_filter($reportes, function ($reporte) {
@@ -39,7 +40,6 @@ class ReportController extends Controller
             $res = tiemposDeRespuesta($reportes);
 
             return view('admin.reports.index', compact('reportes', 'pendientes', 'completados', 'res'));
-        
         } catch (\Throwable $th) {
 
             return view('errors.report');

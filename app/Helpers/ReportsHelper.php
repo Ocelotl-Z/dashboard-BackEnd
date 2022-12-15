@@ -29,3 +29,11 @@ if (!function_exists('tiemposDeRespuesta')) {
         return [gmdate("H:i:s", $diferencias[0] * 60), gmdate("H:i:s", end($diferencias) * 60), gmdate("H:i:s", $promedio * 60)];
     }
 }
+
+if (!function_exists('ticketMesDia')) {
+    function ticketMesDia($reportes)
+    {
+        $days = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+        $days = array('Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday', 'Saturday');
+    }
+}

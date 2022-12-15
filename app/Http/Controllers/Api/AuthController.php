@@ -77,6 +77,7 @@ class AuthController extends Controller
                 'name' => $userAuth->name,
                 'email' => $userAuth->email,
                 'full_name' => $userAuth->full_name,
+                'profile_photo_path'=>$userAuth->profile_photo_url,
                 'roles' => Auth::guard('company')->user()->getRoleNames(),
             ];
             return response(["token" => $token, "user" =>  $user], Response::HTTP_OK);
@@ -91,7 +92,7 @@ class AuthController extends Controller
             'id' => auth()->user()->id,
             'name' => auth()->user()->name,
             'email' => auth()->user()->email,
-            'photo_url' => auth()->user()->profile_photo_url,
+            'profile_photo_path' => auth()->user()->profile_photo_url,
             'roles' => auth()->user()->getRoleNames(),
         ];
         return response([$user], Response::HTTP_OK);

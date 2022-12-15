@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
@@ -13,6 +14,7 @@ class Employee extends Authenticatable
     use HasFactory;
     use HasRoles;
     use HasApiTokens;
+    use HasProfilePhoto;
 
     protected $fillable = [
         'name',
@@ -28,7 +30,8 @@ class Employee extends Authenticatable
     ];
 
     protected $appends = [
-        'full_name'
+        'full_name',
+        'profile_photo_url',
     ];
 
     public function company()

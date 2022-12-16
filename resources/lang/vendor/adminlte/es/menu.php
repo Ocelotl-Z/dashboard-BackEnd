@@ -25,6 +25,8 @@ return [
     'roles'                         => 'Roles',
     'company'                       => 'Compañia',
     'reports'                       => 'Reportes',
-    'help desk'                     => 'Help Desk'
+    'help desk'                     => 'Help Desk',
+    'point of sale'                 => 'Punto de venta',
+    'inventory'                     => 'Inventario'
 
 ];

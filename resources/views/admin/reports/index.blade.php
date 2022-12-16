@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>{{ __('Reportes') }}</h1>
+    <h1>{{ __('Help Desk') }}</h1>
 @stop
 
 @section('content')
@@ -35,19 +35,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="info-box">
-                    <span class="info-box-icon bg-info"><i class="fas fa-tachometer-alt"></i></span>
-                    <div class="info-box-content">
-                        <span>Respuesta mas rapida: {{ $res[0] }}</span>
-                        <span>Respuesta mas lenta: {{ $res[1] }}</span>
-                        <span>Promedio : {{ $res[2] }}</span>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h3>Solicitudes por dia</h3>
+            <canvas id="diasConReporte" style="width:100%;max-width:800px;"></canvas>
+        </div>
     </div>
 
 @stop
@@ -57,20 +50,22 @@
 @section('js')
     <script>
         const Days = [
+            'Domingo',
             'Lunes',
             'Martes',
             'Miercoles',
             'Jueves',
             'Viernes',
             'Sabado',
-            'Domingo'
         ];
+
+
 
         const data = {
             labels: Days,
             datasets: [{
                 label: 'Tickets Dicimebre',
-                data: [65, 59, 80, 81, 56, 55, 40,10],
+                data: JSON.parse("{{ json_encode($grafica) }}"),
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 159, 64, 0.2)',
@@ -93,10 +88,17 @@
             }]
         };
 
-        new Chart("myChart", {
+        new Chart("diasConReporte", {
             type: "bar",
             data: data,
             options: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    }
+                }],
                 scales: {
                     y: {
                         beginAtZero: true

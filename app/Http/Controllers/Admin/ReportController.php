@@ -39,7 +39,11 @@ class ReportController extends Controller
 
             $res = tiemposDeRespuesta($reportes);
 
-            return view('admin.reports.index', compact('reportes', 'pendientes', 'completados', 'res'));
+            $grafica = ticketMesDia($reportes);
+
+            $empleadoTickets = empleadoRespuestas($reportes);
+
+            return view('admin.reports.index', compact('reportes', 'pendientes', 'completados', 'res', 'grafica', 'empleadoTickets'));
         } catch (\Throwable $th) {
 
             return view('errors.report');

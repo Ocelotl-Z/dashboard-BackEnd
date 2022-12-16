@@ -33,7 +33,42 @@ if (!function_exists('tiemposDeRespuesta')) {
 if (!function_exists('ticketMesDia')) {
     function ticketMesDia($reportes)
     {
-        $days = array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-        $days = array('Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday', 'Saturday');
+        // $days = array('Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+        // $months = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+        $reportes = array_filter($reportes, function ($reporte) {
+            return date('n', strtotime($reporte->fecha_creacion)) == 12;
+        });
+
+        $data = array(0, 0, 0, 0, 0, 0, 0);
+
+        foreach ($reportes as $index => $reporte) {
+            $day = date('w', strtotime($reporte->fecha_creacion));
+
+            $data[$day] += 1;
+        }
+
+        return $data;
+    }
+}
+
+
+if (!function_exists('empleadoRespuestas')) {
+    function empleadoRespuestas($reportes)
+    {
+        $ids = [];
+
+        $reportes = array_filter($reportes, function ($reporte) {
+            return $reporte->id_empleado != null;
+        });
+
+
+        foreach ($reportes as $key => $reporte) {
+            array_push($ids, $reporte->id_empleado);
+        }
+
+        array_count_values($ids);
+        sort($ids);
+
+        return $ids[0];
     }
 }

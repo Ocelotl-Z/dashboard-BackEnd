@@ -76,6 +76,7 @@ class ReportController extends Controller
 
             return view('admin.reports.inventory', compact('productos', 'reporte', 'rating', 'total_items'));
         } catch (\Throwable $th) {
+
             return view('errors.report');
         }
     }
@@ -94,8 +95,16 @@ class ReportController extends Controller
 
             $ventas = json_decode($response->getBody())->carts;
 
-            return view('admin.reports.sales', compact('ventas'));
+            $prodMax = productosMasVendidos($ventas, $client);
+
+            $ventaMayor = ventaMayor($ventas);
+
+            $prodsVendidos = productosVendidos($ventas);
+
+            return view('admin.reports.sales', compact('ventas', 'prodMax', 'ventaMayor', 'prodsVendidos'));
         } catch (\Throwable $th) {
+
+            dd($th);
             return view('errors.report');
         }
     }

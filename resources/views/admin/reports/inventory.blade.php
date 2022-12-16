@@ -50,7 +50,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-uppercase">{{ $rating[0]->title }}</h5>
                         <p class="card-text">Producto con mayor rating</p>
-                        <p>{{ $rating[0]->rating }} pz</p>
+                        <p>{{ $rating[0]->rating }} puntos</p>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-uppercase">{{ $rating[1]->title }}</h5>
                         <p class="card-text">Producto con menor rating</p>
-                        <p>{{ $reporte[1]->rating }} pz</p>
+                        <p>{{ $reporte[1]->rating }} puntos</p>
                     </div>
                 </div>
             </div>

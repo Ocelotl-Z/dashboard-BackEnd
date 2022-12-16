@@ -1,5 +1,7 @@
 <?php
 
+use GuzzleHttp\Client;
+
 if (!function_exists('generalProductos')) {
     function generalProductos($productos)
     {
@@ -50,25 +52,66 @@ if (!function_exists('mejorRating')) {
 }
 
 if (!function_exists('productosMasVendidos')) {
-    function productosMasVendidos($productos)
+    function productosMasVendidos($ventas, Client $client)
     {
-        $maxRating = 0;
-        $minRating = INF;
+        $productos = [];
 
-        $maxProd = [];
-        $minProd = [];
-
-        foreach ($productos as $key => $producto) {
-            if ($producto->stock > $maxRating) {
-                $maxRating = $producto->rating;
-                $maxProd = $producto;
+        foreach ($ventas as $key => $venta) {
+            foreach ($venta->products as $producto) {
+                array_push($productos, $producto->id);
             }
-            if ($producto->stock < $minRating) {
-                $minRating = $producto->rating;
-                $minProd = $producto;
+        }
+        $productos = array_count_values($productos);
+        sort($productos);
+
+        // $maxSell = end($productos);
+
+        $maxProds = array_filter($productos, function ($producto) {
+            return $producto == 3;
+        });
+
+        $maxProds = array_keys($maxProds);
+
+        foreach ($maxProds as $key => $prod) {
+
+            $response = $client->request('GET', '/products/' . $prod);
+            $peticion = json_decode($response->getBody());
+
+            $maxProds[$key] = $peticion;
+        }
+
+        return $maxProds;
+    }
+}
+
+
+if (!function_exists('ventaMayor')) {
+
+    function ventaMayor($ventas)
+    {
+        $maxMoney = 0;
+        $maxVenta = 0;
+
+        foreach ($ventas as $key => $venta) {
+            if ($venta->total > $maxMoney) {
+                $maxMoney = $venta->total;
+                $maxVenta = $venta;
             }
         }
 
-        return [$maxProd, $minProd];
+        return $maxVenta;
+    }
+}
+
+if (!function_exists('productosVendidos')) {
+
+    function productosVendidos($ventas)
+    {
+        $totalProductos = 0;
+        foreach ($ventas as $venta) {
+            $totalProductos += $venta->totalProducts;
+        }
+
+        return $totalProductos;
     }
 }

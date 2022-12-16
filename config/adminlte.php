@@ -335,17 +335,17 @@ return [
         ['header' => 'reports'],
         [
             'text' => 'help desk',
-            'route'  => 'admin.reports.index',
+            'route'  => 'admin.help_desk',
             'icon' => 'fa-fw fab fa-hire-a-helper',
         ],
         [
             'text' => 'point of sale',
-            'route'  => 'admin.reports.index',
+            'route'  => 'admin.sales',
             'icon' => 'fa-fw fas fa-cash-register',
         ],
         [
             'text' => 'inventory',
-            'route'  => 'admin.reports.index',
+            'route'  => 'admin.inventory',
             'icon' => 'fa-fw fas fa-boxes',
         ],
     ],

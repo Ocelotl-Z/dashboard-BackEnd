@@ -15,4 +15,6 @@ Route::resource('employees', EmployeeController::class)->names('admin.employees'
 Route::resource('companies', CompanyController::class)->names('admin.companies');
 Route::resource('roles', RoleController::class)->names('admin.roles');
 
-Route::resource('reports', ReportController::class)->names('admin.reports');
+Route::get('help_desk', [ReportController::class, 'index'])->name('admin.help_desk');
+Route::get('sales', [ReportController::class, 'sales'])->name('admin.sales');
+Route::get('inventory', [ReportController::class, 'inventory'])->name('admin.inventory');

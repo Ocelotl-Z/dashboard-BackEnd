@@ -18,7 +18,7 @@ class ReportController extends Controller
 
         $client = new Client([
             'base_uri' => 'https://sdawhelpdesk.azurewebsites.net',
-            'timeout'  => 2.0,
+            'timeout'  => 10.0,
         ]);
 
         try {
@@ -43,7 +43,33 @@ class ReportController extends Controller
 
             $empleadoTickets = empleadoRespuestas($reportes);
 
-            return view('admin.reports.index', compact('reportes', 'pendientes', 'completados', 'res', 'grafica', 'empleadoTickets'));
+            return view('admin.reports.help_desk', compact('reportes', 'pendientes', 'completados', 'res', 'grafica', 'empleadoTickets'));
+        } catch (\Throwable $th) {
+
+            return view('errors.report');
+        }
+    }
+
+    public function inventory()
+    {
+        return view('admin.reports.inventory');
+    }
+
+    public function sales()
+    {
+
+        $client = new Client([
+            'base_uri' => 'https://sdawhelpdesk.azurewebsites.net',
+            'timeout'  => 10.0,
+        ]);
+
+        try {
+
+            $response = $client->request('GET', '/');
+
+            $ventas = json_decode($response->getBody())->items;
+
+            return view('admin.reports.sales');
         } catch (\Throwable $th) {
 
             return view('errors.report');

@@ -51,5 +51,7 @@
     "Create new role": "Crear nuevo rol",
     "Delete": "Eliminar",
     "Complete Reports": "Reportes Solucionados",
-    "Pending Reports": "Reportes Pendientes"
+    "Pending Reports": "Reportes Pendientes",
+    "Sales" : "Ventas",
+    "inventory":"Inventario"
 }
